@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket List</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: black;
+        }
+        .navbar {
+            background-color: black;
+            overflow: hidden;
+            width: 100%;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 21px 16px;
+            font-size: 1.5em; /* Increased font size */
+            text-decoration: none;
+        }
+        .content {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .event-container {
+            border: 1px solid #ddd;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: white;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: transparent;
+        }
+        td {
+            padding: 10px;
+            text-align: left;
+            border: none;
+        }
+        .event-details {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .url-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: pink;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+        .pink-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: pink;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+         .url-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: deepPink;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .url-button:hover {
+            background-color: hotPink;
+        }
+    </style>
+    <script>
+        function reloadPage() {
+            location.reload();
+        }
+    </script>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#default" class="logo">Scrapper</a>
+    </div>
+
+    <div class="content">
+        {% for event in events %}
+            <div class="event-container">
+                <h2>{{ event.title }}</h2>
+                <p>{{ event.date }}</p>
+                <p>{{ event.location }}</p>
+                <div class="event-details">
+                    <p>Price: {{ event.price }}</p>
+                    <p>Ratings: {{ event.ratings }}</p>
+                </div>
+                <a href="{{ event.url }}" class="url-button">Visit</a>
+            </div>
+        {% endfor %}
+    </div>
+
+
+</body>
+</html>
